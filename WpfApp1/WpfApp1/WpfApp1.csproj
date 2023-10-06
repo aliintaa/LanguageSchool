@@ -107,6 +107,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Componens\PartialClass\Service.cs" />
     <Compile Include="Componens\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

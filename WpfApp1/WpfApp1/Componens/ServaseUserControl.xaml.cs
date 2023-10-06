@@ -20,13 +20,15 @@ namespace WpfApp1.Componens
     /// </summary>
     public partial class ServaseUserControl : UserControl
     {
-        public ServaseUserControl(Image image, string title, string costTime, string discount)
+        public ServaseUserControl(Image image, string title, decimal cost, string costTime, string discount, Visibility costVisibility)
         {
             InitializeComponent();
+            CosTb.Text = cost.ToString();
             ServiceImg = image;
             TitleTb.Text = title;
             CostTimeTb.Text = costTime;
             DiscountTb.Text = discount;
+            CosTb.Visibility = costVisibility;
         }
     }
 }

@@ -15,5 +15,6 @@ namespace WpfApp1
     public partial class App : Application
     {
         public static LnggschlEntities db = new LnggschlEntities();
+        public static bool isAdmin = false;
     }
 }

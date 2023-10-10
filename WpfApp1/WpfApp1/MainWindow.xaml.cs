@@ -35,5 +35,18 @@ namespace WpfApp1
         }
         //    App.db.SaveChanges();
         //}
+        private void OffAdminBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.isAdmin = false;       
+        }
+
+        private void OnAdminBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (PasswordPb.Password == "0000")
+            {
+                App.isAdmin = true;
+                Frames.Navigate(new mypage.Page1());
+            }
+        }
     }
 }

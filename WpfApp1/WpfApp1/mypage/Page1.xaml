@@ -16,10 +16,9 @@
         </Grid.RowDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" Margin="0,0,10,0" Grid.Row="1">
             <WrapPanel x:Name="ServiceWp" Grid.Row="1">
-
             </WrapPanel>
         </ScrollViewer>
-
+        <Button x:Name="AddBtn" Grid.Row="2">Добавить</Button>
 
     </Grid>
 </Page>

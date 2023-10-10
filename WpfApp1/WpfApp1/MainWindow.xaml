@@ -20,10 +20,18 @@
         <TextBlock Grid.Column="1">Language School</TextBlock>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+            <Button x:Name="OnAdminBtn" Click="OnAdminBtn_Click_1">
+                <TextBlock>вход<LineBreak/>админа</TextBlock>
+            </Button>
+            <PasswordBox x:Name="PasswordPb" Padding="2" Height="35" Margin="5"></PasswordBox>
+            <Button x:Name="OffAdminBtn">
+                <TextBlock>выход<LineBreak/>админа</TextBlock>
+            </Button>
             <Button >Назад</Button>
             <Button >Вперед</Button>
         </StackPanel>
-
-        <Frame x:Name="Frames" Grid.Column="1" Grid.Row="1"></Frame>
+        <Frame na
+            x:Name="Frames" Grid.Column="1" Grid.Row="1"></Frame>
+        
     </Grid>
 </Window>

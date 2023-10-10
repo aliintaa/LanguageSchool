@@ -24,10 +24,14 @@ namespace WpfApp1.mypage
         public Page1()
         {
             InitializeComponent();
+            if(App.isAdmin == false)
+            {
+                AddBtn.Visibility = Visibility.Hidden;
+            }
             var services = App.db.Service.ToList();
             foreach (var service in services)
             {
-                ServiceWp.Children.Add(new ServaseUserControl(new Image(), service.Title, service.Cost , service.CostTime, service.Discount.ToString(),service.CostVisibility));
+                ServiceWp.Children.Add(new ServaseUserControl(new Image(), service.Title, service.Cost , service.CostTime, service.DiscountStr,service.CostVisibility));
             }
         }
     }

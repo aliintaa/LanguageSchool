@@ -13,18 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace alinamagazinteh
+namespace alinamagazinteh.Entities
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для UserControl1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControl1 : UserControl
     {
-        public MainWindow()
+        public UserControl1(Image _img,string textTd, string OtzvTd, string PriceTd, string TovarTd)
         {
             InitializeComponent();
-     
 
-        }
+            image = _img;
+            Text.Text = textTd;
+            otzv.Text = OtzvTd;
+            price.Text = PriceTd;
+            tovar.Text = TovarTd ;
+    }
     }
 }
+

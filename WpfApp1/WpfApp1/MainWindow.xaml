@@ -27,11 +27,9 @@
             <Button x:Name="OffAdminBtn">
                 <TextBlock>выход<LineBreak/>админа</TextBlock>
             </Button>
-            <Button >Назад</Button>
-            <Button >Вперед</Button>
+            <Button x:Name="BackBtn" >Назад</Button>
         </StackPanel>
-        <Frame na
-            x:Name="Frames" Grid.Column="1" Grid.Row="1"></Frame>
+        <Frame x:Name="Frames" Grid.Column="1" Grid.Row="1"></Frame>
         
     </Grid>
 </Window>

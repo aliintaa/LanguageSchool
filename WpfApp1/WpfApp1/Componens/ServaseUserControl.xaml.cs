@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,37 @@ namespace WpfApp1.Componens
     /// </summary>
     public partial class ServaseUserControl : UserControl
     {
-        public ServaseUserControl(Image image, string title, decimal cost, string costTime, string discount, Visibility costVisibility)
+        public ServaseUserControl(byte[] image, string title, decimal cost, string costTime, string discount, Visibility costVisibility)
         {
             InitializeComponent();
             CosTb.Text = cost.ToString();
-            ServiceImg = image;
             TitleTb.Text = title;
             CostTimeTb.Text = costTime;
             DiscountTb.Text = discount;
             CosTb.Visibility = costVisibility;
+            ServiceImg.Source = GetImageSourse(image);
+        }
+
+        private BitmapImage GetImageSourse(byte[] byteImage)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            try
+            {
+                MemoryStream byteStream = new MemoryStream(byteImage);
+
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = byteStream;
+                bitmapImage.EndInit();
+
+            }
+
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+            return bitmapImage;
         }
     }
 }
+
+

@@ -31,7 +31,7 @@ namespace WpfApp1.mypage
             var services = App.db.Service.ToList();
             foreach (var service in services)
             {
-                ServiceWp.Children.Add(new ServaseUserControl(new Image(), service.Title, service.Cost , service.CostTime, service.DiscountStr,service.CostVisibility));
+                ServiceWp.Children.Add(new ServaseUserControl(service.MainImage, service.Title, service.Cost , service.CostTime, service.DiscountStr,service.CostVisibility));
             }
         }
     }

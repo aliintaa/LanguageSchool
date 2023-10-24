@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Demo" Height="450" Width="800">
-    <Grid Background="#FFFBE1E6">
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="9*"/>
@@ -17,17 +17,17 @@
             
         </Grid.RowDefinitions>
         <Image Grid.Row="0" Grid.Column="0" Source="/Resources/school_logo.png" ></Image>
-        <TextBlock Grid.Column="1">Language School</TextBlock>
+        <TextBlock x:Name="TitleTb" Grid.Column="1">Language School</TextBlock>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
             <Button x:Name="OnAdminBtn" Click="OnAdminBtn_Click_1">
                 <TextBlock>вход<LineBreak/>админа</TextBlock>
             </Button>
             <PasswordBox x:Name="PasswordPb" Padding="2" Height="35" Margin="5"></PasswordBox>
-            <Button x:Name="OffAdminBtn">
+            <Button x:Name="OffAdminBtn" Click="OffAdminBtn_Click_1">
                 <TextBlock>выход<LineBreak/>админа</TextBlock>
             </Button>
-            <Button x:Name="BackBtn" >Назад</Button>
+            <Button x:Name="BackBtn" Click="BackBtn_Click" >Назад</Button>
         </StackPanel>
         <Frame x:Name="Frames" Grid.Column="1" Grid.Row="1"></Frame>
         

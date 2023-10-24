@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace WpfApp1.Componens
 {
     public partial class Service
     {
+
         public string CostTime
         {
             get
@@ -38,6 +40,27 @@ namespace WpfApp1.Componens
                     return Visibility.Collapsed;
                 else
                     return Visibility.Visible;
+            }
+        }
+        public Brush DiscountBrush
+        {
+            get
+            {
+                if (Discount != 0)
+                    return new SolidColorBrush(Colors.LightGreen);
+                else
+                    return new SolidColorBrush(Colors.White) ;
+            }
+        }
+
+        public decimal TotalCost
+        {
+            get
+            {
+                if (Discount != 0)
+                    return Cost - (Cost * (decimal) Discount / 100);
+                else 
+                    return Cost;
             }
         }
     }

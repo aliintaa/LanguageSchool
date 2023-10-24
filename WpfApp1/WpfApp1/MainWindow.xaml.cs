@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Componens;
 
 namespace WpfApp1
 {
@@ -24,7 +25,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            Frames.Navigate(new mypage.Page1());
+           Navigation.mainWindow = this;
+            Navigation.NextPage(new Navigation.PageComponent( new mypage.Page1(), "Список услуг"));
             //    var path = @"C:\Users\222126\Desktop\Сессия 1\";
             //    foreach(var item in App.db.Service.ToArray())
             //    {
@@ -45,8 +47,23 @@ namespace WpfApp1
             if (PasswordPb.Password == "0000")
             {
                 App.isAdmin = true;
-                Frames.Navigate(new mypage.Page1());
+                Navigation.NextPage(new Navigation.PageComponent(new mypage.Page1(), "Услуги админа"));
+                PasswordPb.Clear(); 
+                Navigation.ClearHistory();
             }
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.BackPage();
+        }
+
+        private void OffAdminBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            App.isAdmin = false;
+            Navigation.NextPage(new Navigation.PageComponent(new mypage.Page1(), "Список услуг"));
+            Navigation.ClearHistory();
+            
         }
     }
 }

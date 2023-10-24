@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static WpfApp1.Componens.Navigation;
 
 namespace WpfApp1.Componens
 {
@@ -21,15 +22,18 @@ namespace WpfApp1.Componens
     /// </summary>
     public partial class ServaseUserControl : UserControl
     {
-        public ServaseUserControl(byte[] image, string title, decimal cost, string costTime, string discount, Visibility costVisibility)
+        private Service service;
+        public ServaseUserControl(Service _service)
         {
             InitializeComponent();
-            CosTb.Text = cost.ToString();
-            TitleTb.Text = title;
-            CostTimeTb.Text = costTime;
-            DiscountTb.Text = discount;
-            CosTb.Visibility = costVisibility;
-            ServiceImg.Source = GetImageSourse(image);
+            service = _service;
+            CosTb.Text = service.Cost.ToString();
+            TitleTb.Text = service.Title;
+            CostTimeTb.Text = service.CostTime;
+            DiscountTb.Text = service.DiscountStr;
+            CosTb.Visibility = service.CostVisibility;
+            ServiceImg.Source = GetImageSourse(service.MainImage);
+            MainBorder.Background = service.DiscountBrush;
         }
 
         private BitmapImage GetImageSourse(byte[] byteImage)
@@ -50,6 +54,27 @@ namespace WpfApp1.Componens
                 MessageBox.Show("Error");
             }
             return bitmapImage;
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (service.ClientService != null)
+            {
+                MessageBox.Show("Удаление запрещенно");
+            }
+            else
+            {
+                App.db.Service.Remove(service);
+                App.db.SaveChanges();
+            }
+
+        }
+
+        private void CreateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(), "Редактировать"));
+
         }
     }
 }

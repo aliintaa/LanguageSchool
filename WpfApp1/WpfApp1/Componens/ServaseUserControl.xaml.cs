@@ -25,7 +25,20 @@ namespace WpfApp1.Componens
         private Service service;
         public ServaseUserControl(Service _service)
         {
+      
+            
             InitializeComponent();
+            if (App.isAdmin == false)
+            {
+                CreateBtn.Visibility = Visibility.Hidden;
+                DeleteBtn.Visibility = Visibility.Hidden;
+            }
+
+            else
+            {
+                CreateBtn.Visibility = Visibility.Visible;
+                DeleteBtn.Visibility = Visibility.Visible;
+            }
             service = _service;
             CosTb.Text = service.Cost.ToString();
             TitleTb.Text = service.Title;
@@ -41,11 +54,18 @@ namespace WpfApp1.Componens
             BitmapImage bitmapImage = new BitmapImage();
             try
             {
-                MemoryStream byteStream = new MemoryStream(byteImage);
-
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = byteStream;
-                bitmapImage.EndInit();
+                if (service.MainImage != null)
+                {
+                    MemoryStream byteStream = new MemoryStream(byteImage);
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = byteStream;
+                    bitmapImage.EndInit();
+                }
+                else
+                {
+                    bitmapImage = new BitmapImage(new Uri(@"\Resources\schol_logo.png",UriKind.Relative));
+                }
+                
 
             }
 
@@ -73,7 +93,7 @@ namespace WpfApp1.Componens
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(), "Редактировать"));
+            Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(service), "Редактировать"));
 
         }
     }

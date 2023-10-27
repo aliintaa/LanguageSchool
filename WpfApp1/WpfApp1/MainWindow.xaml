@@ -29,7 +29,7 @@
             </Button>
             <Button x:Name="BackBtn" Click="BackBtn_Click" >Назад</Button>
         </StackPanel>
-        <Frame x:Name="Frames" Grid.Column="1" Grid.Row="1"></Frame>
+        <Frame x:Name="Frames" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden" ></Frame>
         
     </Grid>
 </Window>

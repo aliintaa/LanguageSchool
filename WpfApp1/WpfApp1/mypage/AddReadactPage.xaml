@@ -9,41 +9,47 @@
       Title="AddReadactPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="187*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="199*"/>
+            <ColumnDefinition Width="201*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Vertical" Width="402" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock >Идентификатор</TextBlock>
-            <TextBox IsEnabled="False" x:Name="IdTb"></TextBox>
-        </StackPanel>
-            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock >Название</TextBlock>
-            <TextBox x:Name="NameTb"></TextBox>
+                <TextBlock >Идентификатор</TextBlock>
+                <TextBox Text="{Binding ID}" IsEnabled="False" x:Name="IdTb"></TextBox>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock >Стоимость</TextBlock>
-            <TextBox x:Name="CostTb"></TextBox>
-        </StackPanel>
+                <TextBlock >Название</TextBlock>
+                <TextBox Text="{Binding Title}"  x:Name="NameTb"></TextBox>
+            </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock >Длительность</TextBlock>
-            <TextBox x:Name="TimeTb"></TextBox>
-        </StackPanel>
+                <TextBlock  >Стоимость</TextBlock>
+                <TextBox Text="{Binding Cost}" x:Name="CostTb"></TextBox>
+            </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock >Описание</TextBlock>
-            <TextBox x:Name="OpisTb"></TextBox>
-        </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock >Скидка</TextBlock>
-            <TextBox x:Name="SaleTb"></TextBox>
-        </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Image Height="70"></Image>
-                <TextBlock x:Name="ImageTb"></TextBlock>
-                </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="EditBtn" Click="EditBtn_Click" >Изменить изображение</Button>
+                <TextBlock >Длительность</TextBlock>
+                <TextBox Text="{Binding DurationInSeconds}" x:Name="TimeTb"></TextBox>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock  >Описание</TextBlock>
+                <TextBox Text="{Binding Description}" x:Name="OpisTb"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="SaveBtn" Click="SaveBtn_Click_1" >Сохранить</Button>
+                <TextBlock >Скидка</TextBlock>
+                <TextBox Text="{Binding Discount}" x:Name="SaleTb"></TextBox>
             </StackPanel>
         </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Border BorderBrush="Blue" BorderThickness="1">
+                <Image x:Name="Image" Width="200" Height="190" Source="{Binding MainImage}"></Image>
+            </Border>
+            <Button x:Name="EditBtn" Click="EditBtn_Click" Content="Изменить изображение" />
+        </StackPanel>
+        <Button x:Name="SaveBtn" Click="SaveBtn_Click_1"  Grid.Row="1" Grid.RowSpan="2">Сохранить</Button>
     </Grid>
 </Page>

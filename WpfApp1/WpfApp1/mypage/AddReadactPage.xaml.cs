@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static WpfApp1.Componens.Navigation;
 using WpfApp1.Componens;
+using Microsoft.Win32;
+using System.IO;
 
 namespace WpfApp1.mypage
 {
@@ -22,25 +24,40 @@ namespace WpfApp1.mypage
     /// </summary>
     public partial class AddReadactPage : Page
     {
-        public AddReadactPage()
+        private Service service;
+        public AddReadactPage(Service _service)
         {
             InitializeComponent();
+            service = _service;
+            this.DataContext = service;
         }
 
   
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(), "Сохранить"));
+            
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpg|*.jpg|*.jpeg|*.jpeg"
+            };
+            if(openFile.ShowDialog().GetValueOrDefault())
+            {
+                service.MainImage = File.ReadAllBytes(openFile.FileName);
+                Image.Source = new BitmapImage(new Uri(openFile.FileName));
+            }
         }
 
         private void SaveBtn_Click_1(object sender, RoutedEventArgs e)
         {
-
+            if(service.ID == 0)
+            {
+                App.db.Service.Add(service);
+            }
+            App.db.SaveChanges();
         }
     }
 }

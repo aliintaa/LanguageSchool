@@ -100,7 +100,7 @@ namespace WpfApp1.mypage
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(), "Добавить услугу"));
+            Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(new Service()), "Добавить услугу"));
 
         }
     }

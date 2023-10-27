@@ -110,7 +110,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceID" Type="int" Nullable="false" />
-          <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoByte" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -516,6 +516,7 @@
           <Property Name="ServiceID" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Service" Relationship="Self.FK_ServicePhoto_Service" FromRole="ServicePhoto" ToRole="Service" />
+          <Property Name="PhotoByte" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -860,9 +861,9 @@
           <EntitySetMapping Name="ServicePhoto">
             <EntityTypeMapping TypeName="LnggschlModel.ServicePhoto">
               <MappingFragment StoreEntitySet="ServicePhoto">
+                <ScalarProperty Name="PhotoByte" ColumnName="PhotoByte" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
-                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

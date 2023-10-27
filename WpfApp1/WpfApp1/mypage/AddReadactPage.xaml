@@ -29,11 +29,11 @@
             </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock  >Стоимость</TextBlock>
-                <TextBox Text="{Binding Cost}" x:Name="CostTb"></TextBox>
+                <TextBox Text="{Binding Cost}" x:Name="CostTb" PreviewTextInput="CostTb_PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock >Длительность</TextBlock>
-                <TextBox Text="{Binding DurationInSeconds}" x:Name="TimeTb"></TextBox>
+                <TextBox Text="{Binding DurationInSeconds}" x:Name="TimeTb" PreviewTextInput="CostTb_PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock  >Описание</TextBlock>
@@ -41,7 +41,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock >Скидка</TextBlock>
-                <TextBox Text="{Binding Discount}" x:Name="SaleTb"></TextBox>
+                <TextBox Text="{Binding Discount}" x:Name="SaleTb" PreviewTextInput="CostTb_PreviewTextInput"></TextBox>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="0">
@@ -49,6 +49,15 @@
                 <Image x:Name="Image" Width="200" Height="190" Source="{Binding MainImage}"></Image>
             </Border>
             <Button x:Name="EditBtn" Click="EditBtn_Click" Content="Изменить изображение" />
+            <ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn>
+                            <Image Source="{Binding}"></Image>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
         <Button x:Name="SaveBtn" Click="SaveBtn_Click_1"  Grid.Row="1" Grid.RowSpan="2">Сохранить</Button>
     </Grid>

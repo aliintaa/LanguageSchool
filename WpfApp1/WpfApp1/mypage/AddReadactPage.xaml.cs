@@ -53,11 +53,40 @@ namespace WpfApp1.mypage
 
         private void SaveBtn_Click_1(object sender, RoutedEventArgs e)
         {
+            StringBuilder errors = new StringBuilder();
             if(service.ID == 0)
             {
-                App.db.Service.Add(service);
+                if(App.db.Service.Any(x=> x.Title == service.Title))
+                {
+                    errors.AppendLine("Такая услуга уже имеется!");
+                }
+                else
+                {
+                    App.db.Service.Add(service);
+                }
             }
-            App.db.SaveChanges();
+            if(service.DurationInSeconds > 14400)
+            {
+                errors.AppendLine("Длительность не может привышать 4 часов");
+            }
+            if(errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString()); 
+            }
+            else
+            {
+                App.db.SaveChanges();
+                MessageBox.Show("Сохранено");
+                Navigation.NextPage(new PageComponent(new mypage.Page1(),"Список услуг")); 
+            }
+        }
+
+        private void CostTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!(char.IsDigit(e.Text[0])))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

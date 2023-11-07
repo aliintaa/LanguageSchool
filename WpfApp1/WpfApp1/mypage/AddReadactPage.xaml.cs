@@ -28,8 +28,10 @@ namespace WpfApp1.mypage
         public AddReadactPage(Service _service)
         {
             InitializeComponent();
+            App.servicePage = this;
             service = _service;
             this.DataContext = service;
+            RefreshPhoto();
         }
 
   
@@ -87,6 +89,37 @@ namespace WpfApp1.mypage
             {
                 e.Handled = true;
             }
+        }
+
+        private void AddImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpg|*.jpg|*.jpeg|*.jpeg"
+            };
+            if (openFile.ShowDialog().GetValueOrDefault())
+                App.db.ServicePhoto.Add(new ServicePhoto
+                {
+                    ServiceID = service.ID,
+                    PhotoByte = File.ReadAllBytes(openFile.FileName)
+                   
+        });
+            RefreshPhoto();
+            App.db.SaveChanges();
+        }  
+        public void RefreshPhoto()
+        {
+            PhotoWp.Children.Clear();
+            foreach(var photo in App.db.ServicePhoto)
+            {
+                PhotoWp.Children.Add(new PhotoUserControl(photo));
+            }
+            BitmapImage bitmapImage = new BitmapImage();
+            MemoryStream byteStream = new MemoryStream(service.MainImage);
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = byteStream; 
+            bitmapImage.EndInit();
+            Image.Source = bitmapImage; 
         }
     }
 }

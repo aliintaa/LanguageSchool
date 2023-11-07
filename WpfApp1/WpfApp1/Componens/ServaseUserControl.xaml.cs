@@ -30,6 +30,7 @@ namespace WpfApp1.Componens
             InitializeComponent();
             if (App.isAdmin == false)
             {
+                EntryBtn.Visibility = Visibility.Hidden;
                 CreateBtn.Visibility = Visibility.Hidden;
                 DeleteBtn.Visibility = Visibility.Hidden;
             }
@@ -95,6 +96,11 @@ namespace WpfApp1.Componens
 
             Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(service), "Редактировать"));
 
+        }
+
+        private void EntryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new PageComponent( new mypage.CleintRecordPage(service) ,"Запись на услгу"));
         }
     }
 }

@@ -16,8 +16,8 @@
             <DatePicker Margin="5" Name="DateDp"></DatePicker>
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Время ХХ:ХХ</TextBlock>
-                <TextBlock Width="70" Name="TimeTb"></TextBlock>
-                <TextBlock Width="70" Name="EndTimeTb" IsEnabled="False"></TextBlock>
+                <TextBox Width="70" Name="StartTimeTb" TextChanged="StartTimeTb_TextChanged_1"></TextBox>
+                <TextBox Width="70" Name="EndTimeTb" IsEnabled="False"></TextBox>
             </StackPanel>
             <Button x:Name="EntryBtn">Записаться</Button>
         </StackPanel>

@@ -103,6 +103,11 @@ namespace WpfApp1.mypage
             Navigation.NextPage(new PageComponent(new mypage.AddReadactPage(new Service()), "Добавить услугу"));
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new PageComponent(new UpcimongEntriesPage(), "Записи клиентов"));
+        }
     }
 }
 

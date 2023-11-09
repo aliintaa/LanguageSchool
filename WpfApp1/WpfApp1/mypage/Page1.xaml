@@ -35,7 +35,11 @@
             <WrapPanel x:Name="ServiceWp" Grid.Row="1">
             </WrapPanel>
         </ScrollViewer>
-        <Button x:Name="AddBtn" Grid.Row="2" Click="AddBtn_Click">Добавить</Button>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+         <Button x:Name="AddBtn" MinWidth="150" MaxWidth="155" Click="AddBtn_Click">Добавить</Button>
+            <Button MinWidth="150" MaxWidth="155" Click="Button_Click">Записи клиентов</Button>
+        </StackPanel>
+        
 
     </Grid>
 </Page>

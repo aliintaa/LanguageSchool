@@ -1,0 +1,30 @@
+﻿<Page x:Class="peresda.RedakOkno"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:peresda"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RedakOkno">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock>Серийный номер</TextBlock>
+            <TextBox Text="{Binding SerialNumber}"></TextBox>
+            <TextBlock>Наименование</TextBlock>
+            <TextBox Text="{Binding Name}"></TextBox>
+            <TextBlock>Фото</TextBlock>
+            <TextBox Text="{Binding MainImage}"></TextBox>
+            <TextBlock>Еденица имерения</TextBlock>
+            <ComboBox x:Name="redakCb" Width="150">
+                <ComboBoxItem>кг</ComboBoxItem>
+                <ComboBoxItem>гр</ComboBoxItem>
+                <ComboBoxItem>шт</ComboBoxItem>
+            </ComboBox>
+            <TextBlock>Количество</TextBlock>
+            <TextBox Text="{Binding Count}"></TextBox>
+            <Button Margin="0 5" x:Name="sohran" Click="sohran_Click">Сохранить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

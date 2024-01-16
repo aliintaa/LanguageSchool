@@ -1,0 +1,18 @@
+﻿<Window x:Class="Avtoriz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Avtoriz"
+        mc:Ignorable="d"
+        Title="РЕГИСТРАЦИЯ" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="353*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="TitleTb" HorizontalAlignment="Center" Grid.Column="1" Width="102">Войдите в систему</TextBlock>
+        <Button x:Name="BackBtn" Grid.Column="0"  Height="80">назад</Button>
+        <Frame x:Name="FramMW" Grid.ColumnSpan="2" Navigated="FramMW_Navigated"></Frame>
+    </Grid>
+</Window>
